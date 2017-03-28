@@ -17,8 +17,8 @@ public class Game extends Midia{
         
     }
     
-    public Game(String console, int numero, int censura, String titulo, int qtdDisponivel) {
-        super(numero, censura, titulo, qtdDisponivel);
+    public Game(String console, int numero, int censura, String titulo, int qtdDisponivel, int catId) {
+        super(numero, censura, titulo, qtdDisponivel, catId);
         this.console = console;
     }
 
@@ -68,6 +68,16 @@ public class Game extends Midia{
     @Override
     public int getNumero() {
         return super.getNumero();
+    }
+
+    @Override
+    public void setCategoria(int catId) {
+        super.setCategoria(catId);
+    }
+
+    @Override
+    public String getCategoria() {
+        return super.getCategoria();
     }
     
     

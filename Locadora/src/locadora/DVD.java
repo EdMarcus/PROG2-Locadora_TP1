@@ -18,8 +18,8 @@ public class DVD extends Midia{
         
     }
     
-    public DVD(String genero, String idioma, int numero, int censura, String titulo, int qtdDisponivel) {
-        super(numero, censura, titulo, qtdDisponivel);
+    public DVD(String genero, String idioma, int numero, int censura, String titulo, int qtdDisponivel, int catId) {
+        super(numero, censura, titulo, qtdDisponivel, catId);
         this.genero = genero;
         this.idioma = idioma;
     }
@@ -78,6 +78,16 @@ public class DVD extends Midia{
     @Override
     public int getNumero() {
         return super.getNumero();
+    }
+
+    @Override
+    public void setCategoria(int catId) {
+        super.setCategoria(catId);
+    }
+
+    @Override
+    public String getCategoria() {
+        return super.getCategoria();
     }
     
     

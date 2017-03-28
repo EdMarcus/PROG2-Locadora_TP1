@@ -20,8 +20,8 @@ public class CD extends Midia{
         
     }
 
-    public CD(String nome, String grupo, String cantor, int nMusicas, int numero, int censura, String titulo, int qtdDisponivel) {
-        super(numero, censura, titulo, qtdDisponivel);
+    public CD(String nome, String grupo, String cantor, int nMusicas, int numero, int censura, String titulo, int qtdDisponivel, int catId) {
+        super(numero, censura, titulo, qtdDisponivel, catId);
         this.nome = nome;
         this.grupo = grupo;
         this.cantor = cantor;
@@ -98,6 +98,16 @@ public class CD extends Midia{
     @Override
     public int getNumero() {
         return super.getNumero();
+    }
+
+    @Override
+    public void setCategoria(int catId) {
+        super.setCategoria(catId);
+    }
+
+    @Override
+    public String getCategoria() {
+        return super.getCategoria();
     }
     
     
