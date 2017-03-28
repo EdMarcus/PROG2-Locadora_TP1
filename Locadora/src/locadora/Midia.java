@@ -16,7 +16,8 @@ public abstract class Midia {
     private String titulo;
     private int qtdDisponivel;
     private String categoria;
-
+    private static double[][] precoCategoria = new double[4][4];
+    
     // Construtor padrão, sem argumentos.  
     public Midia(){
         
@@ -84,5 +85,8 @@ public abstract class Midia {
         }
     }
 
-    
+    // Método estático da classe Mídia, que determina um valor para o tipo de mídia e categoria
+    public static void setValorPorCategoriaMidia(double valor, int catId, int tipoMidia){
+        precoCategoria[catId][tipoMidia] = valor;
+    }
 }
