@@ -89,6 +89,11 @@ public class DVD extends Midia{
     public String getCategoria() {
         return super.getCategoria();
     }
+
+    @Override
+    public int getIdCategoria() {
+        return super.getIdCategoria();
+    }
     
     
     

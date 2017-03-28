@@ -67,6 +67,19 @@ public abstract class Midia {
     public String getCategoria() {
         return categoria;
     }
+    
+    public int getIdCategoria() {
+        switch(categoria){
+            case "Lançamento":
+                return 1;
+            case "Comum":
+                return 2;
+            case "Acervo":
+                return 3;
+            default:
+                return 0;
+        }
+    }
 
     public void setCategoria(int catId) {
         switch(catId){
