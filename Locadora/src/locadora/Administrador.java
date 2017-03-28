@@ -20,6 +20,9 @@ public class Administrador extends Comum{
         super(nome, endereco, telefone, senha);
     }
     
+    /* Funções de funcionários */
+    
+    //Cria um funcionário auxiliar a partir de seu tipo e retorna seu objeto.
     public Funcionario criaUsuario(boolean admin){
         if(admin){
             Administrador aux = new Administrador();
@@ -29,7 +32,21 @@ public class Administrador extends Comum{
             return aux;
         }
     }
+    
+    //Método sobreescrito do funcionário comum que cadastra e retorna o cliente.
+    @Override
+    public Cliente cadastraCliente() {
+        return super.cadastraCliente();
+    }
 
+    //Método sobreescrito do funcionário comum que cadastra e retorna a mídia.
+    @Override
+    public Midia criaMidia(int tipo) {
+        return super.criaMidia(tipo);
+    }
+
+    /* Término das funções de funcionários */
+    
     @Override
     public String getNome() {
         return super.getNome();
@@ -68,16 +85,6 @@ public class Administrador extends Comum{
     @Override
     public void setSenha(String senha) {
         super.setSenha(senha);
-    }
-
-    @Override
-    public Cliente cadastraCliente() {
-        return super.cadastraCliente();
-    }
-
-    @Override
-    public Midia criaMidia(int tipo) {
-        return super.criaMidia(tipo);
     }
 
     @Override

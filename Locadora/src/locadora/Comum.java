@@ -21,6 +21,9 @@ public class Comum extends Funcionario{
         setAdmin(false);
     }
     
+    /* Funções de funcionários */
+    
+    // Implementação do método abstrato de funcionários que cria uma mídia auxiliar a partir de seu tipo e retorna seu objeto.
     @Override
     public Midia criaMidia(int tipo){
         if(tipo==1){
@@ -35,11 +38,15 @@ public class Comum extends Funcionario{
         }else return null;
     }
     
+    // Implementação do método abstrato de funcionários que cria um cliente auxiliar e retorna seu objeto.
     @Override
     public Cliente cadastraCliente(){
         Cliente aux = new Cliente();
         return aux;
     }
+    
+    /* Término das funções de funcionários */
+    
     
     @Override
     public void setSenha(String senha) {
