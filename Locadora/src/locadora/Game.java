@@ -1,3 +1,5 @@
+package locadora;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,30 +10,20 @@
  *
  * @author edlon
  */
-public class DVD extends Midia{
-    private String genero;
-    private String idioma;
+public class Game extends Midia{
+    private String console;
 
-    public DVD(String genero, String idioma, int numero, int censura, String titulo, int qtdDisponivel) {
+    public Game(String console, int numero, int censura, String titulo, int qtdDisponivel) {
         super(numero, censura, titulo, qtdDisponivel);
-        this.genero = genero;
-        this.idioma = idioma;
+        this.console = console;
     }
 
-    public String getGenero() {
-        return genero;
+    public String getConsole() {
+        return console;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
-    public String getIdioma() {
-        return idioma;
-    }
-
-    public void setIdioma(String idioma) {
-        this.idioma = idioma;
+    public void setConsole(String console) {
+        this.console = console;
     }
 
     @Override
@@ -51,7 +43,7 @@ public class DVD extends Midia{
 
     @Override
     public String getTitulo() {
-        return super.getTitulo(); //To change body of generated methods, choose Tools | Templates.
+        return super.getTitulo();
     }
 
     @Override
@@ -73,7 +65,6 @@ public class DVD extends Midia{
     public int getNumero() {
         return super.getNumero();
     }
-    
     
     
 }

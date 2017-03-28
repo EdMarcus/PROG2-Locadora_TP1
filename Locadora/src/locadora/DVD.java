@@ -1,3 +1,5 @@
+package locadora;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,50 +10,30 @@
  *
  * @author edlon
  */
-public class CD extends Midia{
-    private String nome;
-    private String grupo;
-    private String cantor;
-    private int nMusicas;
+public class DVD extends Midia{
+    private String genero;
+    private String idioma;
 
-    public CD(String nome, String grupo, String cantor, int nMusicas, int numero, int censura, String titulo, int qtdDisponivel) {
+    public DVD(String genero, String idioma, int numero, int censura, String titulo, int qtdDisponivel) {
         super(numero, censura, titulo, qtdDisponivel);
-        this.nome = nome;
-        this.grupo = grupo;
-        this.cantor = cantor;
-        this.nMusicas = nMusicas;
+        this.genero = genero;
+        this.idioma = idioma;
     }
 
-    public String getNome() {
-        return nome;
+    public String getGenero() {
+        return genero;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
-    public String getGrupo() {
-        return grupo;
+    public String getIdioma() {
+        return idioma;
     }
 
-    public void setGrupo(String grupo) {
-        this.grupo = grupo;
-    }
-
-    public String getCantor() {
-        return cantor;
-    }
-
-    public void setCantor(String cantor) {
-        this.cantor = cantor;
-    }
-
-    public int getnMusicas() {
-        return nMusicas;
-    }
-
-    public void setnMusicas(int nMusicas) {
-        this.nMusicas = nMusicas;
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
     }
 
     @Override
@@ -71,7 +53,7 @@ public class CD extends Midia{
 
     @Override
     public String getTitulo() {
-        return super.getTitulo();
+        return super.getTitulo(); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

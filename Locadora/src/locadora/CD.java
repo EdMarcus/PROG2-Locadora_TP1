@@ -1,3 +1,5 @@
+package locadora;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,20 +10,50 @@
  *
  * @author edlon
  */
-public class Game extends Midia{
-    private String console;
+public class CD extends Midia{
+    private String nome;
+    private String grupo;
+    private String cantor;
+    private int nMusicas;
 
-    public Game(String console, int numero, int censura, String titulo, int qtdDisponivel) {
+    public CD(String nome, String grupo, String cantor, int nMusicas, int numero, int censura, String titulo, int qtdDisponivel) {
         super(numero, censura, titulo, qtdDisponivel);
-        this.console = console;
+        this.nome = nome;
+        this.grupo = grupo;
+        this.cantor = cantor;
+        this.nMusicas = nMusicas;
     }
 
-    public String getConsole() {
-        return console;
+    public String getNome() {
+        return nome;
     }
 
-    public void setConsole(String console) {
-        this.console = console;
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(String grupo) {
+        this.grupo = grupo;
+    }
+
+    public String getCantor() {
+        return cantor;
+    }
+
+    public void setCantor(String cantor) {
+        this.cantor = cantor;
+    }
+
+    public int getnMusicas() {
+        return nMusicas;
+    }
+
+    public void setnMusicas(int nMusicas) {
+        this.nMusicas = nMusicas;
     }
 
     @Override
@@ -63,6 +95,7 @@ public class Game extends Midia{
     public int getNumero() {
         return super.getNumero();
     }
+    
     
     
 }
