@@ -11,22 +11,30 @@ package locadora;
  * @author edlon
  */
 
+import java.text.ParseException;
 import java.util.*;
 
 public class Teste {
-    public static void main(String[] args){
-        Cliente cliente = new Cliente();
-        cliente.setDependente("Eduardo");
-        cliente.setDependente("José");
-        cliente.setDependente("Alberto");
-        cliente.setDependente("Noé");
-        cliente.setDependente("Carlos");
+    public static void main(String[] args) {
+        //Cliente cliente = new Cliente();
+        //cliente.setDependente("Eduardo");
+        //cliente.setDependente("José");
+        //cliente.setDependente("Alberto");
+        //cliente.setDependente("Noé");
+        //cliente.setDependente("Carlos");
         
-        System.out.println(cliente.getDependentes());
-        System.out.println(cliente.getDependenteI(4));
-        cliente.imprimeDependentes();
-        cliente.delDependente(1);
+        //System.out.println(cliente.getDependentes());
+        //System.out.println(cliente.getDependenteI(4));
+        //cliente.imprimeDependentes();
+        //cliente.delDependente(1);
         //Limpa.tela();
-        cliente.imprimeDependentes();
+        //cliente.imprimeDependentes();
+        
+        Data data1 = new Data(31, 12, 2017);
+        Data data2 = new Data(1, 1, 2018);
+        System.out.println(data1.comparaDatas(data2));
+        
+        
+        
     }
 }
