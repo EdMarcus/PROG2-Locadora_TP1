@@ -15,7 +15,7 @@ public class DVD extends Midia{
     private String idioma;
 
     public DVD(){
-        
+        super();
     }
     
     public DVD(String genero, String idioma, int numero, int censura, String titulo, int qtdDisponivel, int catId) {

@@ -11,8 +11,6 @@ package locadora;
  * @author edlon
  */
 
-import java.text.ParseException;
-import java.util.*;
 
 public class Teste {
     public static void main(String[] args) {
@@ -30,7 +28,7 @@ public class Teste {
         //Limpa.tela();
         //cliente.imprimeDependentes();
         
-        Data data1 = new Data(32, 12, 2017);
+        Data data1 = new Data(29, 2, 2015);
         Data data2 = new Data(1, 1, 2018);
         System.out.println(data1.comparaDatas(data2));
         

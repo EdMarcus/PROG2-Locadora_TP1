@@ -14,7 +14,7 @@ public class Game extends Midia{
     private String console;
 
     public Game(){
-        
+        super();
     }
     
     public Game(String console, int numero, int censura, String titulo, int qtdDisponivel, int catId) {

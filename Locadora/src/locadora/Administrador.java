@@ -13,11 +13,13 @@ package locadora;
 public class Administrador extends Comum{
     
     public Administrador() {
+        super();
         setAdmin(true);
     }
     
     public Administrador(String nome, Endereco endereco, String telefone, String senha) {
         super(nome, endereco, telefone, senha);
+        setAdmin(true);
     }
     
     /* Funções de funcionários */
@@ -32,11 +34,24 @@ public class Administrador extends Comum{
             return aux;
         }
     }
+    public Funcionario criaUsuario(boolean admin, String nome, Endereco endereco, String telefone, String senha){
+        if(admin){
+            Administrador aux = new Administrador(nome, endereco, telefone, senha);
+            return aux;
+        }else {
+            Comum aux = new Comum(nome, endereco, telefone, senha);
+            return aux;
+        }
+    }
     
     //Método sobreescrito do funcionário comum que cadastra e retorna o cliente.
     @Override
     public Cliente cadastraCliente() {
         return super.cadastraCliente();
+    }
+    @Override
+    public Cliente cadastraCliente(String nome, String cpf, String telefone){
+        return super.cadastraCliente(nome, cpf, telefone);
     }
 
     //Método sobreescrito do funcionário comum que cadastra e retorna a mídia.

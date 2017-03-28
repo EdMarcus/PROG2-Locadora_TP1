@@ -13,6 +13,7 @@ package locadora;
 public class Comum extends Funcionario{
 
     public Comum() {
+        super();
         setAdmin(false);
     }
     
@@ -42,6 +43,10 @@ public class Comum extends Funcionario{
     @Override
     public Cliente cadastraCliente(){
         Cliente aux = new Cliente();
+        return aux;
+    }
+    public Cliente cadastraCliente(String nome, String cpf, String telefone){
+        Cliente aux = new Cliente(nome, cpf, telefone);
         return aux;
     }
     
