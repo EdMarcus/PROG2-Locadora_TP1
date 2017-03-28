@@ -15,6 +15,10 @@ public class CD extends Midia{
     private String grupo;
     private String cantor;
     private int nMusicas;
+    
+    public CD(){
+        
+    }
 
     public CD(String nome, String grupo, String cantor, int nMusicas, int numero, int censura, String titulo, int qtdDisponivel) {
         super(numero, censura, titulo, qtdDisponivel);

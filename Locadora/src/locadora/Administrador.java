@@ -11,13 +11,23 @@ package locadora;
  * @author edlon
  */
 public class Administrador extends Comum{
-    public Funcionario criaUsuario(){
-        Funcionario aux;
-        return aux;
+    
+    public Administrador() {
+        setAdmin(true);
     }
-
+    
     public Administrador(String nome, Endereco endereco, String telefone, String senha) {
         super(nome, endereco, telefone, senha);
+    }
+    
+    public Funcionario criaUsuario(boolean admin){
+        if(admin){
+            Administrador aux = new Administrador();
+            return aux;
+        }else {
+            Comum aux = new Comum();
+            return aux;
+        }
     }
 
     @Override
@@ -61,13 +71,13 @@ public class Administrador extends Comum{
     }
 
     @Override
-    public void cadastraCliente() {
-        super.cadastraCliente();
+    public Cliente cadastraCliente() {
+        return super.cadastraCliente();
     }
 
     @Override
-    public void criaMidia() {
-        super.criaMidia();
+    public Midia criaMidia(int tipo) {
+        return super.criaMidia(tipo);
     }
 
     @Override

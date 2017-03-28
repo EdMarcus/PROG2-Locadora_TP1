@@ -14,6 +14,10 @@ public class DVD extends Midia{
     private String genero;
     private String idioma;
 
+    public DVD(){
+        
+    }
+    
     public DVD(String genero, String idioma, int numero, int censura, String titulo, int qtdDisponivel) {
         super(numero, censura, titulo, qtdDisponivel);
         this.genero = genero;

@@ -16,6 +16,10 @@ public abstract class Midia {
     private String titulo;
     private int qtdDisponivel;
 
+    public Midia(){
+        
+    }
+    
     public Midia(int numero, int censura, String titulo, int qtdDisponivel) {
         this.numero = numero;
         this.censura = censura;

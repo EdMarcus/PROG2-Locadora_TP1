@@ -17,6 +17,10 @@ public abstract class Funcionario {
     private String senha;
     private boolean admin;
 
+    public Funcionario() {
+        
+    }
+    
     public Funcionario(String nome, Endereco endereco, String telefone, String senha) {
         this.nome = nome;
         this.endereco = endereco;
@@ -64,6 +68,7 @@ public abstract class Funcionario {
         this.admin = admin;
     }
     
-    
+    public abstract Midia criaMidia(int tipo);
+    public abstract Cliente cadastraCliente();
     
 }

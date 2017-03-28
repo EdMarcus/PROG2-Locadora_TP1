@@ -13,6 +13,10 @@ package locadora;
 public class Game extends Midia{
     private String console;
 
+    public Game(){
+        
+    }
+    
     public Game(String console, int numero, int censura, String titulo, int qtdDisponivel) {
         super(numero, censura, titulo, qtdDisponivel);
         this.console = console;

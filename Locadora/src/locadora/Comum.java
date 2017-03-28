@@ -11,14 +11,36 @@ package locadora;
  * @author edlon
  */
 public class Comum extends Funcionario{
-    public void criaMidia(){};
-    public void cadastraCliente(){};
 
+    public Comum() {
+        setAdmin(false);
+    }
+    
     public Comum(String nome, Endereco endereco, String telefone, String senha) {
         super(nome, endereco, telefone, senha);
         setAdmin(false);
     }
-
+    
+    @Override
+    public Midia criaMidia(int tipo){
+        if(tipo==1){
+            DVD aux = new DVD();
+            return aux;
+        }else if(tipo==2){
+            CD aux = new CD();
+            return aux;
+        }else if(tipo==3){
+            Game aux = new Game();
+            return aux;
+        }else return null;
+    }
+    
+    @Override
+    public Cliente cadastraCliente(){
+        Cliente aux = new Cliente();
+        return aux;
+    }
+    
     @Override
     public void setSenha(String senha) {
         super.setSenha(senha);
