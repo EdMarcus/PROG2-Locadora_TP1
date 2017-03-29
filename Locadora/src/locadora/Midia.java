@@ -98,6 +98,14 @@ public abstract class Midia {
         }
     }
 
+    public void imprimeMidia() {
+        System.out.println("Numero: " + numero + "\nCensura:" + censura + 
+                "\nTitulo: " + titulo + "\nDisponivel: " 
+                + qtdDisponivel + "\nCategoria: " + categoria);
+    }
+    
+    
+
     // Método estático da classe Mídia, que determina um valor para o tipo de mídia e categoria
     public static void setValorPorCategoriaMidia(double valor, int catId, int tipoMidia){
         precoCategoria[catId][tipoMidia] = valor;

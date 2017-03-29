@@ -12,6 +12,7 @@ import java.util.Scanner;
  */
 public class SISLOCA {
     private static ArrayList<Cliente> clientes = new ArrayList<>();
+    private static ArrayList<Midia> midias = new ArrayList<>();
     public static void main(String[] args){
         Administrador root = new Administrador("root", null, "00000000", "root");
         ArrayList<Funcionario> funcionarios = new ArrayList<>();
@@ -81,7 +82,7 @@ public class SISLOCA {
                 menuClientes();
             }
             else if(opcao==4){
-                
+                menuMidias();
             }
             else if(opcao==5){
                 int sair;
@@ -106,23 +107,23 @@ public class SISLOCA {
         }
     }
     
-    public static void menuClientes(){
+    public static void menuClientes() {
         int opcao;
         Scanner in = new Scanner(System.in);
-                do{
-                    System.out.println("Selecione uma opção: ");
-                    System.out.println("[1]-> Listar clientes");
-                    System.out.println("[2]-> Cadastrar cliente");
-                    System.out.println("[3]-> Excluir cliente");
-                    System.out.println("[4]-> Editar propriedade cliente");
-                    System.out.println("[5]-> Sair");
-                    opcao = in.nextInt();
-                    if(opcao==1) listarClientes();
-                    if(opcao==2) cadastrarCliente();
-                    if(opcao==3) excluirCliente();
-                    if(opcao==4) editarPropriedadeCliente();
-                    if(opcao==5) menuGeral();
-                }while(opcao>5 || opcao<1);
+        do {
+            System.out.println("Selecione uma opção: ");
+            System.out.println("[1]-> Listar clientes");
+            System.out.println("[2]-> Cadastrar cliente");
+            System.out.println("[3]-> Excluir cliente");
+            System.out.println("[4]-> Editar propriedade cliente");
+            System.out.println("[5]-> Sair");
+            opcao = in.nextInt();
+            if (opcao == 1) listarClientes();
+            if (opcao == 2) cadastrarCliente();
+            if (opcao == 3) excluirCliente();
+            if (opcao == 4) editarPropriedadeCliente();
+            if (opcao == 5) menuGeral();
+        } while (opcao > 5 || opcao < 1);
     }
     
     public static void excluirCliente(){
@@ -185,6 +186,115 @@ public class SISLOCA {
     }
     
     public static void editarPropriedadeCliente(){
+        
+    }
+    
+    public static void menuMidias(){
+        int opcao;
+        Scanner in = new Scanner(System.in);
+        do {
+            System.out.println("Selecione uma opção: ");
+            System.out.println("[1]-> Pesquisar mídia");
+            System.out.println("[2]-> Cadastrar mídia");
+            System.out.println("[3]-> Excluir mídia");
+            System.out.println("[4]-> Editar mídia");
+            System.out.println("[5]-> Sair");
+            opcao = in.nextInt();
+            if (opcao == 1) pesquisarMidias();
+            if (opcao == 2) cadastrarMidia();
+            if (opcao == 3) excluirCliente();
+            if (opcao == 4) editarPropriedadeCliente();
+            if (opcao == 5) menuGeral();
+        } while (opcao > 5 || opcao < 1);        
+    }
+    public static void pesquisarMidias(){
+        int opcao;
+        int numeroMidia;
+        Scanner in = new Scanner(System.in);
+        do{
+            System.out.println("Escolha o tipo de pesquisa:");
+            System.out.println("[1]-> MÍDIA POR NÚMERO");
+            System.out.println("[2]-> DVD POR GÊNERO");
+            System.out.println("[3]-> CD POR GRUPO OU CANTOR");
+            System.out.println("[4]-> SAIR");
+            opcao = in.nextInt();
+        }while(opcao<1 || opcao>4);
+        if(opcao==1){
+            if(midias.isEmpty()) {
+                System.out.println("Não há mídias cadastradas");
+                pesquisarMidias();
+            }
+            System.out.print("\nDigite o número da mídia: ");
+            numeroMidia = in.nextInt();
+            boolean encontrou = false;
+            for(Midia midia : midias){
+                if(midia.getNumero()==numeroMidia){
+                    System.out.println("Mídia encontrada!");
+                    midia.imprimeMidia();
+                    encontrou = true;
+                }
+            }if(!encontrou) System.out.println("Mídia não encontrada!");
+            
+        }else if(opcao==2){
+            if(midias.isEmpty()) {
+                System.out.println("Não há mídias cadastradas");
+                pesquisarMidias();
+            }
+            String genero;
+            System.out.print("\nDigite o gênero do DVD: ");
+            genero = in.nextLine();
+            boolean encontrou = false;
+            for(Midia midia : midias){
+                if(((DVD)midia).getGenero().equals(genero)){
+                    System.out.println("Mídia encontrada!");
+                    midia.imprimeMidia();
+                    encontrou = true;
+                }
+            }if(!encontrou) System.out.println("Mídia não encontrada!");
+            
+        }else if(opcao==3){
+            int escolha;
+            do{
+                System.out.println("Deseja fazer a busca por grupo ou cantor?");
+                System.out.println("[1]-> Grupo");
+                System.out.println("[2]-> Cantor");
+                escolha = in.nextInt();
+            }while(escolha<1 || escolha>2);
+            
+            if(midias.isEmpty()) {
+                System.out.println("Não há mídias cadastradas");
+                pesquisarMidias();
+            }
+            if(escolha==1){
+                String grupo;
+                System.out.print("\nDigite o grupo: ");
+                grupo = in.nextLine();
+                boolean encontrou = false;
+                for(Midia midia : midias){
+                    if(((CD)midia).getGrupo().equals(grupo)){
+                        System.out.println("Mídia encontrada!");
+                        midia.imprimeMidia();
+                        encontrou = true;
+                    }
+                }if(!encontrou) System.out.println("Mídia não encontrada!");
+            }if(escolha==2){
+                String cantor;
+                System.out.print("\nDigite o cantor: ");
+                cantor = in.nextLine();
+                boolean encontrou = false;
+                for(Midia midia : midias){
+                    if(((CD)midia).getCantor().equals(cantor)){
+                        System.out.println("Mídia encontrada!");
+                        midia.imprimeMidia();
+                        encontrou = true;
+                    }
+                }if(!encontrou) System.out.println("Mídia não encontrada!");
+            }
+            
+            
+        }
+    }
+    public static void cadastrarMidia(){
         
     }
 }
