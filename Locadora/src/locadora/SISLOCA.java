@@ -11,6 +11,7 @@ import java.util.Scanner;
  * @author edlon
  */
 public class SISLOCA {
+    private static ArrayList<Cliente> clientes = new ArrayList<>();
     public static void main(String[] args){
         Administrador root = new Administrador("root", null, "00000000", "root");
         ArrayList<Funcionario> funcionarios = new ArrayList<>();
@@ -77,17 +78,7 @@ public class SISLOCA {
                 
             }
             else if(opcao==3){
-                int opcao2;
-                do{
-                    System.out.println("Selecione uma opção: ");
-                    System.out.println("[1]-> Listar clientes");
-                    System.out.println("[2]-> Cadastrar cliente");
-                    System.out.println("[3]-> Excluir cliente");
-                    System.out.println("[4]-> Editar propriedade cliente");
-                    System.out.println("[5]-> Sair");
-                    opcao2 = in.nextInt();
-                    if(opcao2==5) menuGeral();
-                }while(opcao2>5 || opcao2<1);
+                menuClientes();
             }
             else if(opcao==4){
                 
@@ -103,5 +94,97 @@ public class SISLOCA {
                 }while(sair<1 || sair >2);
                 
             }
+    }
+    
+    public static void listarClientes(){
+        if(clientes.isEmpty()) System.out.println("Não há clientes cadastrados!");
+        else{
+            int i=0;
+            for(Cliente cliente : clientes){
+                System.out.println("["+(i+1)+"]-> " + cliente.getNome());
+            }
+        }
+    }
+    
+    public static void menuClientes(){
+        int opcao;
+        Scanner in = new Scanner(System.in);
+                do{
+                    System.out.println("Selecione uma opção: ");
+                    System.out.println("[1]-> Listar clientes");
+                    System.out.println("[2]-> Cadastrar cliente");
+                    System.out.println("[3]-> Excluir cliente");
+                    System.out.println("[4]-> Editar propriedade cliente");
+                    System.out.println("[5]-> Sair");
+                    opcao = in.nextInt();
+                    if(opcao==1) listarClientes();
+                    if(opcao==2) cadastrarCliente();
+                    if(opcao==3) excluirCliente();
+                    if(opcao==4) editarPropriedadeCliente();
+                    if(opcao==5) menuGeral();
+                }while(opcao>5 || opcao<1);
+    }
+    
+    public static void excluirCliente(){
+        Scanner in = new Scanner(System.in);
+        int idCliente;
+        
+        do{
+            System.out.println("Deseja excluir qual cliente?");
+            listarClientes();
+            idCliente = in.nextInt() - 1;
+            if(idCliente<0 || idCliente>clientes.size()) {
+                Limpa.tela();
+                System.out.println("Cliente inválido.");
+            }
+        }while(idCliente<0 || idCliente>clientes.size());
+        clientes.remove(idCliente);
+    }
+    
+    public static void cadastrarCliente(){
+        String nome, cpf, telefone;
+        String nomeDependente;
+        int opcao;
+        Scanner in = new Scanner(System.in);
+        System.out.print("Nome: ");
+        nome = in.nextLine();
+        System.out.print("\nCPF: ");
+        cpf = in.nextLine();
+        System.out.print("\nTelefone: ");
+        telefone = in.nextLine();
+        
+        Cliente cliente = new Cliente(nome, cpf, telefone);
+        
+        do{
+            System.out.println("\nDeseja adicionar dependentes?");
+            System.out.println("[1]-> Sim");
+            System.out.println("[2]-> Não");
+            opcao = in.nextInt();
+        }while(opcao<1 || opcao>2);
+        if(opcao==1){
+            do{
+                if(!(cliente.getDependentes().equals("0"))){
+                    System.out.println("Já estão cadastrados os dependentes: " + cliente.getDependentes());
+                }
+                System.out.print("\nNome do dependente: ");
+                nomeDependente = in.nextLine();
+                cliente.setDependente(nomeDependente);
+                System.out.println("\nDeseja cadastrar mais um cliente?");
+                System.out.println("[1]-> Sim");
+                System.out.println("[2]-> Não");
+                opcao = in.nextInt();
+                while(opcao>2 || opcao<1){
+                    System.out.println("Opção inválida!");
+                    System.out.println("\nDeseja cadastrar mais um cliente?");
+                    System.out.println("[1]-> Sim");
+                    System.out.println("[2]-> Não");
+                    opcao = in.nextInt();
+                }
+            }while(opcao==1);
+        }
+    }
+    
+    public static void editarPropriedadeCliente(){
+        
     }
 }

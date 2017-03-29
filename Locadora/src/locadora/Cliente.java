@@ -75,7 +75,10 @@ public class Cliente {
     }
     public String getDependentes(){
         String aux = "";
-        if(qtdDependentes == 0) aux = "Não há dependentes.";
+        if(qtdDependentes == 0){
+            System.out.println("Não há dependentes.");
+            aux = "0";
+        }
         for(int i=1; i<=qtdDependentes; i++){
             if(qtdDependentes==i) aux += dependentes[i] + ".";
             else aux += dependentes[i] + ", ";
