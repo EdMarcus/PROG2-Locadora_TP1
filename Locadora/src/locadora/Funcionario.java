@@ -70,5 +70,6 @@ public abstract class Funcionario {
     
     public abstract Midia criaMidia(int tipo);
     public abstract Cliente cadastraCliente();
+    public abstract Funcionario criaUsuario(boolean admin);
     
 }

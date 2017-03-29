@@ -103,7 +103,10 @@ public class Comum extends Funcionario{
         return super.isAdmin();
     }
     
-    
+    @Override
+    public Funcionario criaUsuario(boolean admin){
+        return null;
+    }
 
     
     

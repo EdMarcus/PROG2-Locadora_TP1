@@ -26,6 +26,7 @@ public class Administrador extends Comum{
     
     //Cria um funcionário auxiliar a partir de seu tipo e retorna seu objeto.
     public Funcionario criaUsuario(boolean admin){
+        System.out.println("Teste");
         if(admin){
             Administrador aux = new Administrador();
             return aux;
