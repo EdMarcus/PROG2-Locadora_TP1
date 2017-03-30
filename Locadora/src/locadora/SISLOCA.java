@@ -295,6 +295,67 @@ public class SISLOCA {
         }
     }
     public static void cadastrarMidia(){
-        
+        Scanner in = new Scanner(System.in);
+        int tipo;
+        do{
+            System.out.println("Selecione o tipo de mídia:");
+            System.out.println("[1]-> DVD");
+            System.out.println("[2]-> CD");
+            System.out.println("[3]-> GAME");
+            tipo = in.nextInt();
+            if(tipo<1 || tipo>3) System.out.println("Valor inválido!");
+        }while(tipo<1 || tipo>3);
+        if(tipo==1){
+            String genero, idioma, titulo;
+            int qtdDisponivel, catId, numero, censura;
+            System.out.print("Título: ");
+            titulo = in.nextLine();
+            System.out.print("\nNúmero: ");
+            numero = in.nextInt();
+            System.out.print("\nCensura: ");
+            censura = in.nextInt();
+            System.out.println("\nCategoria:");
+            do{
+                System.out.println("[1]-> Lançamento");
+                System.out.println("[2]-> Comum");
+                System.out.println("[3]-> Acervo");
+                catId = in.nextInt();
+            }while(catId<1 || catId>3);
+            System.out.print("\nDisponível: ");
+            qtdDisponivel = in.nextInt();
+            System.out.print("\nGênero: ");
+            genero = in.nextLine();
+            System.out.print("\nIdioma: ");
+            idioma = in.nextLine();
+            
+            DVD dvd = new DVD(genero, idioma, numero, censura, titulo, qtdDisponivel, catId);
+            midias.add(dvd);
+        }
+        else if(tipo==2){
+            String nome, String grupo, String cantor;String inttitulo
+            int nMusicas, numero, censura, qtdDisponivel, catId;
+            System.out.print("Título: ");
+            titulo = in.nextLine();
+            System.out.print("\nNúmero: ");
+            numero = in.nextInt();
+            System.out.print("\nCensura: ");
+            censura = in.nextInt();
+            System.out.println("\nCategoria:");
+            do{
+                System.out.println("[1]-> Lançamento");
+                System.out.println("[2]-> Comum");
+                System.out.println("[3]-> Acervo");
+                catId = in.nextInt();
+            }while(catId<1 || catId>3);
+            System.out.print("\nDisponível: ");
+            qtdDisponivel = in.nextInt();
+            System.out.print("\nGênero: ");
+            genero = in.nextLine();
+            System.out.print("\nIdioma: ");
+            idioma = in.nextLine();
+            String nome, String grupo, String cantor, int nMusicas, int numero, int censura, String titulo, int qtdDisponivel, int catId
+            DVD dvd = new DVD(genero, idioma, numero, censura, titulo, qtdDisponivel, catId);
+            midias.add(dvd);            
+        }
     }
 }
