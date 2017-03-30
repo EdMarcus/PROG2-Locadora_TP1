@@ -13,17 +13,23 @@ import java.util.Scanner;
 public class SISLOCA {
     private static ArrayList<Cliente> clientes = new ArrayList<>();
     private static ArrayList<Midia> midias = new ArrayList<>();
+    private static ArrayList<Funcionario> funcionarios = new ArrayList<>();
+    private static Funcionario usuarioLogado;
     public static void main(String[] args){
         Administrador root = new Administrador("root", null, "00000000", "root");
-        ArrayList<Funcionario> funcionarios = new ArrayList<>();
+        
         funcionarios.add(root);
+        logar();
+        
+    }
+    
+    public static void logar(){
         do{
             Scanner in = new Scanner(System.in);
             String usuario, senha;
             boolean admin;
             boolean logado = false;
             int idUsuario = -1;
-            Funcionario usuarioLogado;
             System.out.println("----------|SISLOCA - Sistema de Locadoras|----------");
             System.out.println("\n\n");
             System.out.println("Você precisa se logar no sistema!");
@@ -39,8 +45,7 @@ public class SISLOCA {
                     if(((String)funcionario.getNome()).equals(usuario) && ((String)funcionario.getSenha()).equals(senha)){
                         logado = true;
                         idUsuario = i;
-                        if(funcionario.isAdmin()) admin = true;
-                        else admin = false;
+                        admin = funcionario.isAdmin();
                     } else{
                         logado = false;
                         System.out.println(funcionario.getNome() + funcionario.getSenha());
@@ -51,14 +56,13 @@ public class SISLOCA {
             }
             Limpa.tela();
             usuarioLogado = funcionarios.get(idUsuario);
-            System.out.println("Usuário " + usuarioLogado.getNome() + "logado com sucesso.");
-            int opcao;
+            System.out.println("Usuário " + usuarioLogado.getNome() + " logado com sucesso.");
             menuGeral();
             
             
         }while(true);
-        
     }
+    
     public static void menuGeral(){
         Scanner in = new Scanner(System.in);
         int opcao;
@@ -91,6 +95,8 @@ public class SISLOCA {
                     System.out.println("[1]-> Deslogar");
                     System.out.println("[2]-> Sair");
                     sair = in.nextInt();
+                    Limpa.tela();
+                    if(sair==1) logar();
                     if(sair==2) System.exit(0);
                 }while(sair<1 || sair >2);
                 
@@ -100,9 +106,11 @@ public class SISLOCA {
     public static void listarClientes(){
         if(clientes.isEmpty()) System.out.println("Não há clientes cadastrados!");
         else{
+            System.out.println("Clientes cadastrados:");
             int i=0;
             for(Cliente cliente : clientes){
                 System.out.println("["+(i+1)+"]-> " + cliente.getNome());
+                i++;
             }
         }
     }
@@ -119,11 +127,12 @@ public class SISLOCA {
             System.out.println("[5]-> Sair");
             opcao = in.nextInt();
             if (opcao == 1) listarClientes();
-            if (opcao == 2) cadastrarCliente();
-            if (opcao == 3) excluirCliente();
-            if (opcao == 4) editarPropriedadeCliente();
-            if (opcao == 5) menuGeral();
+            else if (opcao == 2) cadastrarCliente();
+            else if (opcao == 3) excluirCliente();
+            else if (opcao == 4) editarPropriedadeCliente();
+            else if (opcao == 5) menuGeral();
         } while (opcao > 5 || opcao < 1);
+        menuClientes();
     }
     
     public static void excluirCliente(){
@@ -167,6 +176,7 @@ public class SISLOCA {
                 if(!(cliente.getDependentes().equals("0"))){
                     System.out.println("Já estão cadastrados os dependentes: " + cliente.getDependentes());
                 }
+                in.nextLine();
                 System.out.print("\nNome do dependente: ");
                 nomeDependente = in.nextLine();
                 cliente.setDependente(nomeDependente);
@@ -183,6 +193,7 @@ public class SISLOCA {
                 }
             }while(opcao==1);
         }
+        clientes.add(cliente);
     }
     
     public static void editarPropriedadeCliente(){

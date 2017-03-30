@@ -10,7 +10,7 @@ package locadora;
  *
  * @author edlon
  */
-import java.lang.*;
+import java.util.ArrayList;
 
 public class Cliente {
     private String nome;
@@ -18,6 +18,7 @@ public class Cliente {
     private String telefone;
     private String[] dependentes;
     private int qtdDependentes;
+    private ArrayList<Locacao> locacoes = new ArrayList<>();
     
     public Cliente(){
         dependentes = new String[6];
@@ -101,4 +102,19 @@ public class Cliente {
         qtdDependentes--;
     }
     
+    public boolean equals(Cliente cliente){
+        if(cliente.getCpf().contains(this.cpf)) return true;
+        else return false;
+    }
+    
+    public void gravaLocacao(Locacao locacao){
+        locacoes.add(locacao);
+    }
+    
+    public void imprimeLocacoes(){
+        System.out.println("Locações feitas pelo cliente " + nome + " e seus dependentes:");
+        for(Locacao locacao : locacoes){
+            
+        }
+    }
 }

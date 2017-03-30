@@ -110,4 +110,8 @@ public abstract class Midia {
     public static void setValorPorCategoriaMidia(double valor, int catId, int tipoMidia){
         precoCategoria[catId][tipoMidia] = valor;
     }
+    
+    public static double getValorCategoria(int catId, int tipoMidia){
+        return precoCategoria[catId][tipoMidia];
+    }
 }
