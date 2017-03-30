@@ -128,6 +128,7 @@ public class Locacao {
             else if(midia instanceof CD) System.out.println("TIPO DE MÍDIA: CD");
             else if(midia instanceof Game) System.out.println("TIPO DE MÍDIA: GAME");
             midia.imprimeMidia();
+            System.out.println("-----------------------");
         }
         System.out.println("Preço total da locação: " + precoLocacao);
         System.out.println("Atendente: " + atendente);

@@ -117,4 +117,9 @@ public class Cliente {
             
         }
     }
+
+    public int getQtdDependentes() {
+        return qtdDependentes;
+    }
+    
 }
