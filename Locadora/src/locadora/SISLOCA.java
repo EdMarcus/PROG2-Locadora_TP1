@@ -202,8 +202,8 @@ public class SISLOCA {
             opcao = in.nextInt();
             if (opcao == 1) pesquisarMidias();
             if (opcao == 2) cadastrarMidia();
-            if (opcao == 3) excluirCliente();
-            if (opcao == 4) editarPropriedadeCliente();
+            if (opcao == 3) excluirMidia();
+            if (opcao == 4) editarMidia();
             if (opcao == 5) menuGeral();
         } while (opcao > 5 || opcao < 1);        
     }
@@ -332,7 +332,7 @@ public class SISLOCA {
             midias.add(dvd);
         }
         else if(tipo==2){
-            String nome, String grupo, String cantor;String inttitulo
+            String nome, grupo, cantor, titulo;
             int nMusicas, numero, censura, qtdDisponivel, catId;
             System.out.print("Título: ");
             titulo = in.nextLine();
@@ -349,13 +349,68 @@ public class SISLOCA {
             }while(catId<1 || catId>3);
             System.out.print("\nDisponível: ");
             qtdDisponivel = in.nextInt();
-            System.out.print("\nGênero: ");
-            genero = in.nextLine();
-            System.out.print("\nIdioma: ");
-            idioma = in.nextLine();
-            String nome, String grupo, String cantor, int nMusicas, int numero, int censura, String titulo, int qtdDisponivel, int catId
-            DVD dvd = new DVD(genero, idioma, numero, censura, titulo, qtdDisponivel, catId);
-            midias.add(dvd);            
+            System.out.print("\nNome: ");
+            nome = in.nextLine();
+            System.out.print("\nGrupo: ");
+            grupo = in.nextLine();
+            System.out.print("\nCantor: ");
+            cantor = in.nextLine();
+            System.out.print("\nNº Músicas: ");
+            nMusicas = in.nextInt();
+                    
+            CD cd = new CD(nome, grupo, cantor, nMusicas, numero, censura, titulo, qtdDisponivel, catId);
+            midias.add(cd);   
+        }
+        if(tipo==3){
+            String console, titulo;
+            int numero, censura, qtdDisponivel, catId;
+            System.out.print("Título: ");
+            titulo = in.nextLine();
+            System.out.print("\nNúmero: ");
+            numero = in.nextInt();
+            System.out.print("\nCensura: ");
+            censura = in.nextInt();
+            System.out.println("\nCategoria:");
+            do{
+                System.out.println("[1]-> Lançamento");
+                System.out.println("[2]-> Comum");
+                System.out.println("[3]-> Acervo");
+                catId = in.nextInt();
+            }while(catId<1 || catId>3);
+            System.out.print("\nDisponível: ");
+            qtdDisponivel = in.nextInt();
+            System.out.print("\nConsole: ");
+            console = in.nextLine();
+            
+            Game game = new Game(console, numero, censura, titulo, qtdDisponivel, catId);
+            midias.add(game);
+        }
+    }
+    public static void excluirMidia(){
+        int opcao;
+        Scanner in = new Scanner(System.in);
+        do{
+            System.out.println("Escolha uma mídia: ");
+            listarMidias();
+            opcao = in.nextInt();
+        }while(opcao<1 || opcao>midias.size());
+        midias.remove(opcao - 1);
+    }
+    public static void editarMidia(){
+        
+    }
+    public static void listarMidias(){
+        if(midias.isEmpty()) System.out.println("Não há mídias cadastradas!");
+        else{
+            int i=0;
+            for(Midia midia : midias){
+                String tipoMidia = "";
+                if(midia instanceof DVD) tipoMidia = "DVD";
+                else if(midia instanceof CD) tipoMidia = "CD";
+                else if(midia instanceof Game) tipoMidia = "GAME";
+                System.out.println("["+(i+1)+"]-> "+midia.getNumero()+" - "+midia.getTitulo()+" ["+tipoMidia+"]");
+                i++;
+            }
         }
     }
 }
