@@ -20,7 +20,7 @@ public class SISLOCA {
     private static ArrayList<Midia> midias = new ArrayList<>();
     private static ArrayList<Funcionario> funcionarios = new ArrayList<>();
     private static Funcionario usuarioLogado;
-    private static ArrayList<Locacao> locacoes;
+    private static ArrayList<Locacao> locacoes = new ArrayList<>();
 
     public static void main(String[] args) {
         Administrador root = new Administrador("root", null, "00000000", "root");
@@ -83,6 +83,7 @@ public class SISLOCA {
             Limpa.tela();
         } while (opcao > 5 || opcao < 1);
         if (opcao == 1) {
+            menuLocacao();
 
         } else if (opcao == 2) {
 
@@ -190,7 +191,11 @@ public class SISLOCA {
                 idCliente++;
             }
         }
-        if (encontrou) {
+        if(!encontrou){
+            System.out.println("Cliente não encontrado!");
+            realizarLocacao();
+        }
+        else if (encontrou) {
 
             int escolha, idDependente = 0;
             if (clienteLoca.getQtdDependentes() > 0) {
@@ -215,11 +220,11 @@ public class SISLOCA {
                 }
                 dependente = clienteLoca.getDependenteI(idDependente);
             }
+            in.nextLine();
 
             System.out.print("\nInsira a data de locação: ");
             DateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
             int dia, mes, ano;
-            in.nextLine();
             dia = in.nextInt();
             mes = in.nextInt();
             ano = in.nextInt();
@@ -274,13 +279,29 @@ public class SISLOCA {
             locacoes.add(loca);
             clientes.get(idCliente).gravaLocacao(loca);
         }
+        menuLocacao();
     }
 
     public static void pesquisarLocacao() {
-        for(Cliente cliente : clientes){
-            
-        }
-
+        Scanner in = new Scanner(System.in);
+        String cpf;
+        Cliente clienteBusca = null;
+        boolean encontrou = false;
+        do{
+            System.out.print("\nDigite o CPF do cliente: ");
+            cpf = in.nextLine();
+            for (Cliente cliente : clientes) {
+                if (cliente.getCpf().contains(cpf)) {
+                    encontrou = true;
+                    cliente.imprimeLocacoes();
+                } else {
+                    encontrou = false;
+                }
+            }
+            if(!encontrou) System.out.println("Cliente não encontrado!");
+        }while(!encontrou);
+        menuLocacao();
+       
     }
 
     public static void excluirCliente() {
@@ -357,7 +378,8 @@ public class SISLOCA {
             System.out.println("[2]-> Cadastrar mídia");
             System.out.println("[3]-> Excluir mídia");
             System.out.println("[4]-> Editar mídia");
-            System.out.println("[5]-> Sair");
+            System.out.println("[5]-> Definir preço de mídias");
+            System.out.println("[6]-> Sair");
             opcao = in.nextInt();
             if (opcao == 1) {
                 pesquisarMidias();
@@ -371,10 +393,19 @@ public class SISLOCA {
             if (opcao == 4) {
                 editarMidia();
             }
-            if (opcao == 5) {
+            if (opcao == 4) {
+                precoMidias();
+            }
+            if (opcao == 6) {
                 menuGeral();
             }
         } while (opcao > 5 || opcao < 1);
+    }
+    
+    public static void precoMidias(){
+        double valor;
+        int catId, tipoMidia;
+        Midia.setValorPorCategoriaMidia(valor, catId, tipoMidia);
     }
 
     public static void pesquisarMidias() {
@@ -396,6 +427,7 @@ public class SISLOCA {
             }
             System.out.print("\nDigite o número da mídia: ");
             numeroMidia = in.nextInt();
+            in.nextLine();
             boolean encontrou = false;
             for (Midia midia : midias) {
                 if (midia.getNumero() == numeroMidia) {
@@ -435,6 +467,7 @@ public class SISLOCA {
                 System.out.println("[1]-> Grupo");
                 System.out.println("[2]-> Cantor");
                 escolha = in.nextInt();
+                in.nextLine();
             } while (escolha < 1 || escolha > 2);
 
             if (midias.isEmpty()) {
@@ -486,6 +519,7 @@ public class SISLOCA {
             System.out.println("[2]-> CD");
             System.out.println("[3]-> GAME");
             tipo = in.nextInt();
+            in.nextLine();
             if (tipo < 1 || tipo > 3) {
                 System.out.println("Valor inválido!");
             }
@@ -493,6 +527,7 @@ public class SISLOCA {
         if (tipo == 1) {
             String genero, idioma, titulo;
             int qtdDisponivel, catId, numero, censura;
+            in.nextLine();
             System.out.print("Título: ");
             titulo = in.nextLine();
             System.out.print("\nNúmero: ");
@@ -508,6 +543,7 @@ public class SISLOCA {
             } while (catId < 1 || catId > 3);
             System.out.print("\nDisponível: ");
             qtdDisponivel = in.nextInt();
+            in.nextLine();
             System.out.print("\nGênero: ");
             genero = in.nextLine();
             System.out.print("\nIdioma: ");
@@ -533,6 +569,7 @@ public class SISLOCA {
             } while (catId < 1 || catId > 3);
             System.out.print("\nDisponível: ");
             qtdDisponivel = in.nextInt();
+            in.nextLine();
             System.out.print("\nNome: ");
             nome = in.nextLine();
             System.out.print("\nGrupo: ");
@@ -541,6 +578,7 @@ public class SISLOCA {
             cantor = in.nextLine();
             System.out.print("\nNº Músicas: ");
             nMusicas = in.nextInt();
+            in.nextLine();
 
             CD cd = new CD(nome, grupo, cantor, nMusicas, numero, censura, titulo, qtdDisponivel, catId);
             midias.add(cd);
@@ -563,12 +601,14 @@ public class SISLOCA {
             } while (catId < 1 || catId > 3);
             System.out.print("\nDisponível: ");
             qtdDisponivel = in.nextInt();
+            in.nextLine();
             System.out.print("\nConsole: ");
             console = in.nextLine();
 
             Game game = new Game(console, numero, censura, titulo, qtdDisponivel, catId);
             midias.add(game);
         }
+        menuMidias();
     }
 
     public static void excluirMidia() {
@@ -580,6 +620,7 @@ public class SISLOCA {
             opcao = in.nextInt();
         } while (opcao < 1 || opcao > midias.size());
         midias.remove(opcao - 1);
+        menuMidias();
     }
 
     public static void editarMidia() {

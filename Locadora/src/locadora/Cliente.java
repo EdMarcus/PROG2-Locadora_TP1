@@ -114,7 +114,7 @@ public class Cliente {
     public void imprimeLocacoes(){
         System.out.println("Locações feitas pelo cliente " + nome + " e seus dependentes:");
         for(Locacao locacao : locacoes){
-            
+            locacao.imprimeLocacao();
         }
     }
 

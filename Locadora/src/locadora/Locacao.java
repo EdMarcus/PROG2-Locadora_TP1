@@ -115,7 +115,7 @@ public class Locacao {
     }
     
     public void imprimeLocacao(){
-        
+        System.out.println("----------------------------");
         System.out.println("Locação: " + idLocacao);
         System.out.println("Cliente: " + cliente.getNome() + " \tCPF: " + cliente.getCpf());
         System.out.println("Data de locação: " + dataLoca.getDia() + "/" + dataLoca.getMes() + "/" + dataLoca.getAno());
@@ -132,7 +132,7 @@ public class Locacao {
         }
         System.out.println("Preço total da locação: " + precoLocacao);
         System.out.println("Atendente: " + atendente);
-        
+        System.out.println("----------------------------");
         
     }
 }
